@@ -1,0 +1,355 @@
+PYTHON PROGRAMMING — ASSIGNMENT 01
+Concise Solutions & Single-Method Implementations (Lists & Tuples)
+================================================================================
+
+Q1. What is a List?
+A List in Python is an ordered, mutable (changeable) collection of items enclosed in square brackets []. It allows duplicate elements and can store heterogeneous data types (integers, strings, floats, etc.).
+
+Q2. What is a Tuple?
+A Tuple in Python is an ordered, immutable (unchangeable) collection of items enclosed in parentheses (). Like lists, tuples allow duplicate values and mixed data types, but their elements cannot be modified after creation.
+
+Q3. What is the difference between List and Tuple?
+- Mutability: List is mutable (can add, update, or delete items); Tuple is immutable (cannot be modified once created).
+- Syntax: List uses square brackets [1, 2, 3]; Tuple uses parentheses (1, 2, 3).
+- Performance: List is slightly slower due to dynamic resizing; Tuple is faster and uses less memory.
+- Use Case: List is used for dynamic collections that change over time; Tuple is used for fixed data or dictionary keys.
+
+Q4. Python Program to find the largest element in the list.
+nums = [12, 45, 7, 89, 34]
+print("Largest element:", max(nums))
+
+Output:
+Largest element: 89
+
+Q5. Python program to interchange first and last elements in a list.
+nums = [10, 20, 30, 40, 50]
+nums[0], nums[-1] = nums[-1], nums[0]
+print("Updated list:", nums)
+
+Output:
+Updated list: [50, 20, 30, 40, 10]
+
+Q6. Python program to swap two elements in a list.
+nums = [10, 20, 30, 40, 50]
+pos1, pos2 = 1, 3
+nums[pos1], nums[pos2] = nums[pos2], nums[pos1]
+print("After swapping:", nums)
+
+Output:
+After swapping: [10, 40, 30, 20, 50]
+
+Q7. Python program to Reverse a List.
+nums = [1, 2, 3, 4, 5]
+nums.reverse()
+print("Reversed list:", nums)
+
+Output:
+Reversed list: [5, 4, 3, 2, 1]
+
+Q8. Python program to count occurrences of an element in a list.
+nums = [4, 2, 4, 7, 4, 9]
+target = 4
+print(f"Count of {target}:", nums.count(target))
+
+Output:
+Count of 4: 3
+
+Q9. Python program to find the sum of elements in a list.
+nums = [10, 20, 30, 40]
+print("Sum of elements:", sum(nums))
+
+Output:
+Sum of elements: 100
+
+Q10. Python program to Multiply all numbers in the list.
+nums = [2, 3, 4, 5]
+product = 1
+for num in nums:
+    product *= num
+print("Product of elements:", product)
+
+Output:
+Product of elements: 120
+
+Q11. What are the ways to find the length of a list?
+The standard built-in approach is using len(my_list), which returns the element count in O(1) time. Alternatively, you can iterate through the list with a counter variable in a loop or use sum(1 for _ in my_list).
+
+Q12. Python program to find the smallest and largest number in a list (Without min-max function).
+nums = [34, 12, 89, 5, 67]
+smallest = largest = nums[0]
+for num in nums[1:]:
+    if num < smallest:
+        smallest = num
+    elif num > largest:
+        largest = num
+print("Smallest:", smallest, "| Largest:", largest)
+
+Output:
+Smallest: 5 | Largest: 89
+
+Q13. Python Program to find the area of a circle.
+import math
+radius = float(input("Enter radius: "))
+area = math.pi * (radius ** 2)
+print(f"Area of circle: {area:.2f}")
+
+Output:
+Enter radius: 5
+Area of circle: 78.54
+
+Q14. Take inputs from the user to make a list. Again take one input from the user and delete that element from a list.
+items = input("Enter list elements separated by space: ").split()
+to_delete = input("Enter element to delete: ")
+if to_delete in items:
+    items.remove(to_delete)
+    print("Updated list:", items)
+else:
+    print("Element not found in list.")
+
+Output:
+Enter list elements separated by space: apple banana mango
+Enter element to delete: banana
+Updated list: ['apple', 'mango']
+
+Q15. You are given a list of integer elements. Make a new list that will store a square of elements of the previous list. (Note: Question explicitly requests both with and without list comprehension)
+input_list = [2, 5, 6, 12]
+
+# 1. With list comprehension
+output_comp = [x ** 2 for x in input_list]
+
+# 2. Without list comprehension
+output_loop = []
+for x in input_list:
+    output_loop.append(x ** 2)
+
+print("With comprehension:", output_comp)
+print("Without comprehension:", output_loop)
+
+Output:
+With comprehension: [4, 25, 36, 144]
+Without comprehension: [4, 25, 36, 144]
+
+Q16. WAP to create two lists, one containing all even numbers and the other containing all odd numbers between 0 to 151.
+even_nums = [x for x in range(0, 152) if x % 2 == 0]
+odd_nums = [x for x in range(0, 152) if x % 2 != 0]
+print("Even count:", len(even_nums), "| First 5:", even_nums[:5])
+print("Odd count:", len(odd_nums), "| First 5:", odd_nums[:5])
+
+Output:
+Even count: 76 | First 5: [0, 2, 4, 6, 8]
+Odd count: 76 | First 5: [1, 3, 5, 7, 9]
+
+Q17. Python program to Count Even and Odd numbers in a List.
+nums = [11, 24, 37, 42, 55, 68, 70]
+even_count = sum(1 for x in nums if x % 2 == 0)
+odd_count = len(nums) - even_count
+print(f"Even: {even_count}, Odd: {odd_count}")
+
+Output:
+Even: 4, Odd: 3
+
+Q18. WAP to make new lists, containing only numbers which are divisible by 4, 6, 8, 10, 3, 5, 7, and 9 in separate lists for range(0, 151).
+divisors = [4, 6, 8, 10, 3, 5, 7, 9]
+divisible_lists = {d: [x for x in range(0, 151) if x % d == 0] for d in divisors}
+for d, lst in divisible_lists.items():
+    print(f"Divisible by {d}: {lst[:6]} ... (Total: {len(lst)})")
+
+Output:
+Divisible by 4: [0, 4, 8, 12, 16, 20] ... (Total: 38)
+Divisible by 6: [0, 6, 12, 18, 24, 30] ... (Total: 26)
+Divisible by 8: [0, 8, 16, 24, 32, 40] ... (Total: 19)
+Divisible by 10: [0, 10, 20, 30, 40, 50] ... (Total: 16)
+Divisible by 3: [0, 3, 6, 9, 12, 15] ... (Total: 51)
+Divisible by 5: [0, 5, 10, 15, 20, 25] ... (Total: 31)
+Divisible by 7: [0, 7, 14, 21, 28, 35] ... (Total: 22)
+Divisible by 9: [0, 9, 18, 27, 36, 45] ... (Total: 17)
+
+Q19. Given a list containing elements of different types (integers, strings, and floats), create three separate lists to store integers, strings, and floats respectively.
+mixed = [10, "hello", 3.14, 25, "world", 7.89]
+ints, strs, floats = [], [], []
+for item in mixed:
+    if isinstance(item, int) and not isinstance(item, bool):
+        ints.append(item)
+    elif isinstance(item, str):
+        strs.append(item)
+    elif isinstance(item, float):
+        floats.append(item)
+print("Integers:", ints)
+print("Strings:", strs)
+print("Floats:", floats)
+
+Output:
+Integers: [10, 25]
+Strings: ['hello', 'world']
+Floats: [3.14, 7.89]
+
+Q20. What's The Difference Between The Python append() and extend() Methods?
+- append(x): Adds x as a single element at the end of the list (increases length by 1). Example: [1, 2].append([3, 4]) -> [1, 2, [3, 4]]
+- extend(iterable): Unpacks and appends each element of the iterable individually. Example: [1, 2].extend([3, 4]) -> [1, 2, 3, 4]
+
+Q21. Write a Python program to append a list to the second list.
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+list2.extend(list1)
+print("Combined second list:", list2)
+
+Output:
+Combined second list: [4, 5, 6, 1, 2, 3]
+
+Q22. Write a Python program to find the third-largest number in a list.
+nums = [12, 45, 7, 89, 34, 89, 56]
+unique_sorted = sorted(set(nums), reverse=True)
+print("Third-largest number:", unique_sorted[2])
+
+Output:
+Third-largest number: 45
+
+Q23. Write a Python program to check whether a list contains a sublist.
+main_list = [1, 2, 3, 4, 5]
+sub_list = [3, 4]
+n, m = len(main_list), len(sub_list)
+contains = any(main_list[i:i + m] == sub_list for i in range(n - m + 1))
+print("Contains sublist:", contains)
+
+Output:
+Contains sublist: True
+
+Q24. Write a Python program to generate all sublists of a list.
+nums = [1, 2, 3]
+sublists = [nums[i:j] for i in range(len(nums) + 1) for j in range(i + 1, len(nums) + 1)]
+sublists.insert(0, [])
+print("All sublists:", sublists)
+
+Output:
+All sublists: [[], [1], [1, 2], [1, 2, 3], [2], [2, 3], [3]]
+
+Q25. Write a Python program to find common items from two lists.
+list1 = [1, 2, 3, 4, 5]
+list2 = [4, 5, 6, 7, 8]
+common = list(set(list1) & set(list2))
+print("Common items:", common)
+
+Output:
+Common items: [4, 5]
+
+Q26. How to flatten a list in Python?
+nested_list = [[1, 2], [3, 4], [5, 6]]
+flat_list = [item for sublist in nested_list for item in sublist]
+print("Flattened list:", flat_list)
+
+Output:
+Flattened list: [1, 2, 3, 4, 5, 6]
+
+Q27. How to sort a list in ascending and descending order without using the sort function?
+nums = [64, 25, 12, 22, 11]
+# Bubble sort for Ascending
+asc = nums[:]
+for i in range(len(asc)):
+    for j in range(0, len(asc) - i - 1):
+        if asc[j] > asc[j + 1]:
+            asc[j], asc[j + 1] = asc[j + 1], asc[j]
+desc = asc[::-1]
+print("Ascending:", asc)
+print("Descending:", desc)
+
+Output:
+Ascending: [11, 12, 22, 25, 64]
+Descending: [64, 25, 22, 12, 11]
+
+Q28. How to sort a tuple?
+tup = (40, 10, 30, 20)
+sorted_tup = tuple(sorted(tup))
+print("Sorted tuple:", sorted_tup)
+
+Output:
+Sorted tuple: (10, 20, 30, 40)
+
+Q29. Write a Python program to convert a list of multiple integers into a single integer.
+nums = [11, 33, 50]
+single_int = int("".join(map(str, nums)))
+print("Single integer:", single_int)
+
+Output:
+Single integer: 113350
+
+Q30. What is the difference between del and clear?
+- del: A statement that deletes a specific slice/index or removes the entire variable reference from memory (del lst removes lst completely, causing a NameError if accessed).
+- clear(): A built-in list method that empties all items inside the list (lst.clear() leaves an empty list [] intact in memory).
+
+Q31. What is the difference between remove and pop?
+- remove(val): Deletes the first matching occurrence by value (raises ValueError if missing) and returns None.
+- pop(idx): Deletes the element at the given index (defaults to last item if omitted) and returns the removed element.
+
+Q32. What is the difference between indexing and Slicing?
+- Purpose: Indexing (lst[i]) accesses a single element at a specific position; Slicing (lst[start:stop:step]) extracts a contiguous or stepped range of elements.
+- Return Type: Indexing returns the single element itself; Slicing returns a new list/tuple containing the selected items.
+- Out-of-Range: Indexing raises IndexError if index is out of bounds; Slicing safely truncates without raising an error.
+
+Q33. What is the difference between sort and sorted?
+- Mutation: list.sort() sorts the list in-place (modifies the original list); sorted(iterable) leaves the original iterable unchanged.
+- Return Value: list.sort() returns None; sorted(iterable) returns a brand-new sorted list.
+- Applicability: list.sort() works exclusively on lists; sorted(iterable) works on any iterable (lists, tuples, sets, strings).
+
+Q34. What is the difference between reverse and reversed function?
+- Mutation: list.reverse() reverses the list in-place; reversed(seq) does not modify the original sequence.
+- Return Value: list.reverse() returns None; reversed(seq) returns a lazy reverse iterator object.
+- Applicability: list.reverse() works only on lists; reversed(seq) works on any sequence (lists, tuples, strings, ranges).
+
+Q35. What is the difference between copy and deep copy?
+- Shallow Copy (copy.copy()): Creates a new outer container object and copies references to nested mutable objects (changes inside nested items affect both).
+- Deep Copy (copy.deepcopy()): Creates a new outer container object and recursively duplicates all nested objects so both copies are 100% independent.
+
+Q36. How to check whether the list is empty or not?
+my_list = []
+if not my_list:
+    print("The list is empty.")
+else:
+    print("The list is not empty.")
+
+Output:
+The list is empty.
+
+Q37. How to concatenate two lists?
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+result = list1 + list2
+print("Concatenated list:", result)
+
+Output:
+Concatenated list: [1, 2, 3, 4, 5, 6]
+
+Q38. Given a list of integers, create a new list where each element is replaced by the next largest number in the original list. If there is no larger number, replace the element with -1.
+input_list = [4, 2, 6, 8, 1, 2]
+output_list = []
+for i in range(len(input_list)):
+    next_larger = -1
+    for j in range(i + 1, len(input_list)):
+        if input_list[j] > input_list[i]:
+            next_larger = input_list[j]
+            break
+    output_list.append(next_larger)
+print("Output list:", output_list)
+
+Output:
+Output list: [6, 6, 8, -1, 2, -1]
+
+Q39. Write a function to reverse the elements within each tuple in a list of tuples.
+def reverse_tuples(tuple_list):
+    return [t[::-1] for t in tuple_list]
+
+tuples = [(1, 2), (3, 4), (5, 6)]
+print("Output:", reverse_tuples(tuples))
+
+Output:
+Output: [(2, 1), (4, 3), (6, 5)]
+
+Q40. Write a function to add corresponding elements of tuples in two lists of tuples.
+def add_tuple_lists(l1, l2):
+    return [tuple(a + b for a, b in zip(t1, t2)) for t1, t2 in zip(l1, l2)]
+
+list1 = [(1, 2), (3, 4)]
+list2 = [(5, 6), (7, 8)]
+print("Output:", add_tuple_lists(list1, list2))
+
+Output:
+Output: [(6, 8), (10, 12)]
